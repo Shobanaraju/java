@@ -57,29 +57,16 @@ public class StudentMarksService {
 	}
 	
 	public BaseDTO fetchMarksById(Long employeeId) {
+		BaseDTO basedto = new BaseDTO();
 		
 		EmployeeModel employeemodel =employeerepository.findById(employeeId).get();
-		List<StudentMarks> studentmarks = marksrepository.findByEmployeeId(employeemodel);
-		
-		
-		
-//		Optional<StudentMarks> user = marksrepository.findByEmployee_Id(employee_id);
-//		
-		
-//		Optional<StudentMarks> marksRepository.findByEmployee_Id(employee_id);
-		
-//		
-//		RoleGroup roleGroup = groupRepository.findById(groupId).get();
-//
-//		List<ParentMenu> parentMenu = parentMenuRepository.findByRoleGroup(roleGroup);
-//
-//		return new BaseDTO(200, "Data fetched successfully", parentMenu);
-////		
-		
-		
-		System.out.println(employeeId);
+//		Long emp=employeemodel.getEmployeeId();
+		Optional<StudentMarks> studentmarks = marksrepository.findByEmployeeModel(employeemodel);
+		System.out.println(studentmarks);
 //		System.out.println(user);
-		return new BaseDTO(200, "Marks fetched successfully");
+		basedto.setResponseContent(studentmarks);
+		basedto.setMessage("Marks fetched successfully");
+		return basedto;
 		
 		
 	}

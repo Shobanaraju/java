@@ -22,6 +22,6 @@ public interface MarksRepository extends JpaRepository<StudentMarks, Long> {
 //	StudentMarks findByEmployee_Id(long employee_id);
 	
 	
-	List<StudentMarks> findByEmployeeId(EmployeeModel employeemodel);
+	Optional<StudentMarks> findByEmployeeModel(EmployeeModel employeeModel);
 
 }
